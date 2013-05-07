@@ -7,7 +7,8 @@
   ;; CLJ source code path
   :source-paths ["src/clj"]
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [compojure "1.1.5"]]
+                 [compojure "1.1.5"]
+                 [domina "1.0.2-SNAPSHOT"]]
 
   ;; lein-cljsbuild plugin to build a CLJS project
   :plugins [;; cljsbuild plugin
