@@ -22,15 +22,39 @@
 
   ;; cljsbuild options configuration
   :cljsbuild {:builds
-              [{;; CLJS source code path
-                :source-paths ["src/cljs"]
+              {
+                :dev
+                {;; CLJS source code path
+                 :source-paths ["src/cljs"]
 
-                ;; Google Clojure (CLS) options configuration
-                :compiler {;; CJS generated JS script filename
-                           :output-to "resources/public/js/modern.js"
+                 ;; Google Clojure (CLS) options configuration
+                 :compiler {;; CJS generated JS script filename
+                            :output-to "resources/public/js/modern_dbg.js"
 
-                           ;; minimal js optimization directive
-                           :optimizations :whitespace
+                            ;; minimal js optimization directive
+                            :optimizations :whitespace
 
-                           ;; generated JS code prettyfication
-                           :pretty-print true}}]})
+                            ;; generated JS code prettyfication
+                            :pretty-print true}}
+                :prod
+                {;; CLJS source code path
+                 :source-paths ["src/cljs"]
+
+                 ;; Google Clojure (CLS) options configuration
+                 :compiler {;; CJS generated JS script filename
+                            :output-to "resources/public/js/modern.js"
+
+                            ;; minimal js optimization directive
+                            :optimizations :advanced}}
+                :pre-prod
+                {;; same path as above
+                 :source-paths ["src/cljs"]
+
+                 :compiler {;; CJS generated JS script filename
+                            :output-to "resources/public/js/modern_pre.js"
+
+                            ;; minimal js optimization directive
+                            :optimizations :simple
+
+                            ;; no need for prettyfication
+                            }}}})
