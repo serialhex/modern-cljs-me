@@ -1,9 +1,10 @@
 (ns modern-cljs.login
-  (:use [domina :only [by-id value]]))
+  (:require-macros [hiccups.core :as h])
+  (:require [domina :refer [by-id value]]
+            [hiccups.runtime :as hiccupsrt]
+            [domina.events :refer [listen!]]))
 
-;; define the function to be attached to form submission event
 (defn validate-form []
-  ;; get email and password element from their ids in the HTML form
   (let [email    (by-id "email")
         password (by-id "password")]
     (if (and (> (count (value email)) 0)
@@ -12,17 +13,7 @@
       (do (js/alert "Please, complete the form!")
           false))))
 
-;; define the function to attach validate-form to onsubmit event of
-;; the form
 (defn ^:export init []
-  ;; verify that js/document exists and that it has a getElementById
-  ;; property
   (if (and js/document
-           (.-getElementById js/document))
-    ;; get loginForm by element id and set its onsubmit property to
-    ;; our validate-form function
-    (let [login-form (.getElementById js/document "loginForm")]
-      (set! (.-onsubmit login-form) validate-form))))
-
-;; initialize the HTML page in unobtrusive way
-;; (set! (.-onload js/window) init)
+           (aget js/document "getElementById"))
+    (listen! (by-id "submit") :click validate-form)))
