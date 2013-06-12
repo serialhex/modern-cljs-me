@@ -25,7 +25,7 @@
               {
                 :dev
                 {;; CLJS source code path
-                 :source-paths ["src/cljs"]
+                 :source-paths ["src/brepl" "src/cljs"]
 
                  ;; Google Clojure (CLS) options configuration
                  :compiler {;; CJS generated JS script filename
@@ -38,7 +38,7 @@
                             :pretty-print true}}
                 :prod
                 {;; CLJS source code path
-                 :source-paths ["src/cljs"]
+                 :source-paths ["src/brepl" "src/cljs"]
 
                  ;; Google Clojure (CLS) options configuration
                  :compiler {;; CJS generated JS script filename
