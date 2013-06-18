@@ -12,7 +12,8 @@
                  [domina "1.0.2-SNAPSHOT"]
                  [hiccups "0.2.0"]
                  [shoreleave/shoreleave-remote-ring "0.3.0"]
-                 [shoreleave/shoreleave-remote "0.3.0"]]
+                 [shoreleave/shoreleave-remote "0.3.0"]
+                 [com.cemerick/valip "0.3.2"]]
 
   ;; lein-cljsbuild plugin to build a CLJS project
   :plugins [;; cljsbuild plugin

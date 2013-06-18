@@ -1,7 +1,8 @@
 (ns modern-cljs.core
-  (:require [compojure.core :refer [defroutes GET]]
-            [compojure.route :refer [resources not-found]]
-            [compojure.handler :refer [site]]))
+  (:require [compojure.core    :refer [defroutes GET POST]]
+            [compojure.route   :refer [resources not-found]]
+            [compojure.handler :refer [site]]
+            [modern-cljs.login :refer [authenticate-user]]))
 
 ;; defroutes macro defines a function that chains individual route
 ;; functions together.  The request map is passed to each function in
@@ -9,9 +10,8 @@
 (defroutes app-routes
   ; to serve document root address
   (GET "/" [] "<p>Hello from compojure</p>")
-  ; to serve static pages saved in resources/public dir
+  (POST "/login" [email password] (authenticate-user email password))
   (resources "/")
-  ; if page is not found
   (not-found "foah-oh-foah: page didnt be found!"))
 
 (def handler
