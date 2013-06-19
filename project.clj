@@ -26,7 +26,8 @@
   :ring {:handler modern-cljs.remotes/app}
 
   ;; cljsbuild options configuration
-  :cljsbuild {:builds
+  :cljsbuild {:crossovers [valip.core valip.predicates modern-cljs.login.validators]
+              :builds
               {
                 :dev
                 {;; CLJS source code path
